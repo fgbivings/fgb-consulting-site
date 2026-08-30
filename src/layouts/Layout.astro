@@ -1,0 +1,132 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  bgImage?: string;
+}
+
+const { title, description, bgImage } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class:list={[{ "has-bg": !!bgImage }]}
+    style={bgImage ? `background-image:url(${bgImage});background-repeat:no-repeat;background-position:top left;` : undefined}
+  >
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="site-header__brand" href="/">
+          <img src="/images/fgb-logo.png" alt="FGB Consulting" height="30" />
+        </a>
+        <nav class="site-header__nav">
+          <a href="/#services">Services</a>
+          <a href="/#work">Work</a>
+          <a href="/gary-bivings/">About</a>
+          <a class="btn btn--ghost" href="mailto:gary@fgbconsulting.net">Let's talk</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap site-footer__inner">
+        <div>
+          <h3>Let's talk about your project.</h3>
+          <a class="btn" href="mailto:gary@fgbconsulting.net">Get in touch →</a>
+        </div>
+        <p class="site-footer__meta">© {currentYear} FGB Consulting. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      body.has-bg {
+        background-size: 100% auto;
+      }
+      @media (max-width: 900px) {
+        body.has-bg { background-size: 220% auto; }
+      }
+    </style>
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(250, 249, 246, 0.9);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+      }
+      .site-header__nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      .site-header__nav a:not(.btn) {
+        color: var(--ink);
+      }
+      .site-header__nav a:not(.btn):hover {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      @media (max-width: 700px) {
+        .site-header__nav { gap: 14px; font-size: 0.85rem; }
+        .site-header__nav a.btn { padding: 0.6em 1em; }
+      }
+
+      .site-footer {
+        background: var(--ink);
+        color: #fff;
+        margin-top: 72px;
+      }
+      .site-footer h3 {
+        color: #fff;
+        margin-bottom: 0.6em;
+      }
+      .site-footer__inner {
+        padding: 64px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+      .site-footer .btn {
+        background: var(--accent);
+      }
+      .site-footer .btn:hover {
+        background: var(--gold);
+      }
+      .site-footer__meta {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.85rem;
+        margin: 0;
+      }
+    </style>
+  </body>
+</html>

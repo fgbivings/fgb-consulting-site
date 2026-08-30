@@ -1,0 +1,183 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  {
+    title: "UX/UI Website Design",
+    body: "Seamless, user-centered design that drives engagement and accessibility.",
+  },
+  {
+    title: "Web Development",
+    body: "Modern web development with Astro, headless CMS platforms, and the Jamstack — plus deep experience with WordPress, Webflow, and MODX.",
+  },
+  {
+    title: "Full-Stack Capabilities",
+    body: "Full-stack expertise across JavaScript, TypeScript, React, and Node.js, with cloud-native architecture and API integrations — augmented by AI-assisted development for faster iteration.",
+  },
+  {
+    title: "Analytics & Data Visualization",
+    body: "Google Analytics 4, Tag Manager, and Looker Studio dashboards, plus custom, privacy-first tracking built for a cookieless web.",
+  },
+  {
+    title: "SEO & SEM",
+    body: "Technical and content-driven SEO/SEM, plus optimization for AI-powered search and answer engines — built to maximize visibility as search itself evolves.",
+  },
+  {
+    title: "Digital Advertising & Social Strategy",
+    body: "Targeted, AI-optimized campaigns across social, video, and connected TV — built for how audiences engage today.",
+  },
+  {
+    title: "Digital Governance & Web Operations",
+    body: "Fractional Chief Digital Officer leadership, governance frameworks, and strategic web operations support — senior-level direction without a full-time hire.",
+  },
+];
+
+const caseStudies = [
+  {
+    client: "Editart",
+    image: "/images/editart-logo.svg",
+    services: "Website Design, Development, Content Migration",
+    body: "Currently rebuilding this 50+ year contemporary art publisher's site on a modern Astro + Sanity CMS stack — a fast, bilingual (French/English) catalog with an editable content pipeline, replacing a legacy platform.",
+    inProgress: true,
+    contain: true,
+  },
+  {
+    client: "Mercedes-Benz Vans",
+    image: "/images/client-mercedes-benz-vans.png",
+    services: "Website Design, Content & Site Development, Project Management",
+    body: "Redesigned and modernized an outdated site, sharpening its focus on employee recruitment and showcasing the “Sprinting Forward, Giving Back” community outreach initiative.",
+  },
+  {
+    client: "Becton, Dickinson & Company (BD)",
+    image: "/images/client-bd.png",
+    services: "Website Design, Content & Site Development, Translation Services, Project Management",
+    body: "Over seven years, developed nearly a dozen initiatives for BD spanning product and plant sites, issue management, community outreach, and multilingual education platforms.",
+  },
+  {
+    client: "Artemis Financial Advisors",
+    image: "/images/client-artemis.png",
+    services: "Website Design, Development, Project Management",
+    body: "Rebuilt a dated site into a contemporary design with custom development and refined technical SEO — visitor engagement and lead generation both increased noticeably.",
+  },
+  {
+    client: "Blanco Wilczynski",
+    image: "/images/client-blanco-wilczynski.jpg",
+    services: "Website Design, Development, Project Management",
+    body: "Redesigned the firm's site into a more contemporary style, with custom development and refined technical SEO that meaningfully improved visitor engagement and lead generation.",
+  },
+  {
+    client: "Levick",
+    image: "/images/client-levick.jpg",
+    services: "Website Design, Development, Project Management",
+    body: "Rebuilt the information architecture, added new navigation, standardized page templates, and fixed site search — improving the experience across post and podcast pages.",
+  },
+];
+
+---
+<Layout
+  title="FGB Consulting — Digital Strategy & Web Development"
+  description="FGB Consulting provides strategic digital consulting, custom web development, and online advocacy services, backed by more than 30 years of experience."
+  bgImage="/images/hero-bg.png"
+>
+  <section class="section hero">
+    <div class="wrap hero__inner">
+      <span class="eyebrow">Digital Strategy &amp; Web Development</span>
+      <h1>Consulting all things digital.</h1>
+      <p class="lede">
+        With more than 30 years of experience across digital strategy and web
+        development, FGB Consulting provides expert-level strategic
+        consulting, custom web development, and online advocacy services.
+        Current work spans marketing websites built for focused audiences,
+        high-level analytical and strategic advice, and bespoke web
+        development &mdash; using whichever tools best fit the outcome a
+        client needs.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href="#services">See services</a>
+        <a class="btn btn--ghost" href="#work">View recent work</a>
+      </div>
+      <p class="hero__ai-note">
+        <strong>I use AI as part of my process</strong> &mdash; for
+        research, drafting, and coding efficiency &mdash; but every
+        recommendation is reviewed and verified by me before it reaches a
+        client.
+      </p>
+    </div>
+  </section>
+
+
+  <section id="services" class="section services-section">
+    <div class="wrap">
+      <span class="eyebrow">What I do</span>
+      <h2>Services</h2>
+      <div class="grid grid--3 services-grid">
+        {services.map((service) => (
+          <div class="card">
+            <div class="card__body">
+              <h3>{service.title}</h3>
+              <p>{service.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section work-section">
+    <div class="wrap">
+      <span class="eyebrow">Recent work</span>
+      <h2>Case studies</h2>
+      <div class="grid grid--2 work-grid">
+        {caseStudies.map((project) => (
+          <div class="card">
+            <div class:list={["card__image", { "card__image--contain": project.contain }]}>
+              <img src={project.image} alt={project.client} />
+            </div>
+            <div class="card__body">
+              {project.inProgress && <span class="tag">In progress</span>}
+              <h3>{project.client}</h3>
+              <p class="work-services">{project.services}</p>
+              <p>{project.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero { padding-top: 96px; padding-bottom: 56px; }
+    .hero__inner { max-width: 780px; }
+    .hero__actions {
+      display: flex;
+      gap: 14px;
+      margin: 28px 0 20px;
+      flex-wrap: wrap;
+    }
+    .hero__ai-note {
+      font-size: 1.05rem;
+      color: var(--ink);
+      max-width: 56ch;
+      margin: 28px 0 0;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+    }
+    .hero__ai-note strong { color: var(--accent); }
+    .work-services {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.6em;
+    }
+    .card__image--contain img {
+      object-fit: contain;
+      padding: 32px;
+      background: #fff;
+    }
+  </style>
+</Layout>

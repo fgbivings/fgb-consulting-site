@@ -1,0 +1,186 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const testimonials = [
+  {
+    quote:
+      "Over the years, we have worked with many web developers with a variety of disciplines. Some have been quite good but none match the combination of web design, clarity and efficacy of SEO strategy, speed, and price. One is usually delighted to get one or two of these benefits with a web partner, but with FGB Consulting, you truly are rewarded with all four.",
+    name: "Richard S. Levick, Esq.",
+    title: "Chairman & CEO, Levick",
+  },
+  {
+    quote:
+      "Gary is a consummate professional and a pleasure to work with. No matter the request or the hour of day, he was never nonplussed. He explained technical issues in very understandable ways, trained the staff in the best ways to use the new platform, and even went beyond the scope of work to help mitigate a number of unexpected issues as they arose. We recommend Gary without reservation.",
+    name: "Tess Strand",
+    title: "Deputy Executive Director, The Lincoln Project",
+  },
+];
+
+const recentClients = [
+  "Artemis Financial Advisors",
+  "Auto Alliance (now Alliance for Automotive Innovation)",
+  "Becton, Dickinson and Company",
+  "Blanco Wilczynski",
+  "Drug Information Association",
+  "Editart",
+  "Leidar",
+  "Levick",
+  "Lotte Corporation",
+  "Merck & Co.",
+  "Mercedes-Benz",
+  "Nature For Justice",
+  "Sanofi S.A.",
+  "Society for Neuroscience",
+  "The Lincoln Project",
+];
+---
+<Layout
+  title="Gary Bivings — FGB Consulting"
+  description="Gary Bivings is a seasoned leader in digital strategy and technology innovation, with over 30 years of hands-on experience."
+  bgImage="/images/bio-bg.png"
+>
+  <section class="section bio-hero">
+    <div class="wrap bio-hero__inner">
+      <img class="bio-hero__photo" src="/images/gary-headshot.jpg" alt="Gary Bivings" />
+      <div>
+        <span class="eyebrow">About</span>
+        <h1>Gary Bivings</h1>
+        <p class="bio-hero__title">CEO, FGB Consulting</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight testimonials-section">
+    <div class="wrap">
+      <div class="grid grid--2">
+        {testimonials.map((t) => (
+          <blockquote class="testimonial">
+            <p>&ldquo;{t.quote}&rdquo;</p>
+            <footer>
+              <strong>{t.name}</strong>
+              <span>{t.title}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bio-body-section">
+    <div class="wrap bio-body">
+      <p>
+        Gary Bivings is a seasoned leader in digital strategy and technology
+        innovation, with over 30 years of hands-on experience. His work spans
+        early-stage platform development for startups to designing and
+        executing a nationwide digital advocacy campaign that helped shift
+        U.S. energy policy. Gary combines a deep understanding of web
+        technologies with a sharp strategic sense, particularly in complex,
+        multi-layered digital marketing and outreach efforts.
+      </p>
+      <p>
+        He founded and built a successful consulting practice from the ground
+        up, growing it from a solo operation into a 30+ person digital firm
+        based in Washington, DC. Under his leadership, the firm became a
+        pioneer in web and social media strategy, delivering cutting-edge
+        solutions for clients across the political, corporate, and
+        philanthropic sectors.
+      </p>
+      <p>
+        Gary's initiatives included groundbreaking work in digital
+        communications &mdash; from innovative website development and
+        social media monitoring platforms to custom software solutions such
+        as multilingual intranets, real-time voice-to-text translation,
+        political finance tracking tools, and online learning systems. His
+        approach blends strategic foresight with technical precision, making
+        him a trusted partner for organizations navigating the digital
+        landscape. That precision now extends to AI-augmented development
+        &mdash; Gary uses tools like Claude Code to build and ship custom
+        work faster, while still reviewing and refining every line himself.
+      </p>
+      <p>
+        The firm's work garnered many awards, including the Webby Award on
+        several occasions. Clients included candidates for state and
+        national office &mdash; one of them for president &mdash; the Nasdaq
+        Stock Market, T. Boone Pickens, Pew Charitable Trusts, Edison
+        Electric Institute, Thomson Digital, and Monsanto, to name but a few.
+      </p>
+      <p>
+        Prior to entering the consulting world, Gary worked for the US
+        government and the United Nations in refugee camps and famine relief
+        programs in Africa and Asia, and he started his professional life as
+        a Peace Corps Volunteer in Malaysia.
+      </p>
+      <p>
+        Gary has a B.Sc. in Physics and Math from the University of Arizona
+        and an M.P.A. from the Harvard Kennedy School.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight clients-section">
+    <div class="wrap">
+      <span class="eyebrow">Recent clients</span>
+      <ul class="clients-list">
+        {recentClients.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <style>
+    .bio-hero { padding-top: 96px; padding-bottom: 24px; }
+    .bio-hero__inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .bio-hero__photo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+    .bio-hero__title { color: var(--muted); margin: 0; }
+
+    .testimonial {
+      margin: 0;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--accent);
+    }
+    .testimonial p {
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .testimonial footer {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .testimonial footer strong { color: var(--ink); }
+
+    .bio-body { max-width: 72ch; }
+
+    .clients-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px 24px;
+    }
+    .clients-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 700px) {
+      .bio-hero__inner { flex-direction: column; align-items: flex-start; text-align: left; }
+      .clients-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</Layout>
